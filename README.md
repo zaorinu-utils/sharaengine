@@ -23,7 +23,15 @@
 
 ## 🔭 Visão Geral
 
-Nesta seção, você pode fornecer uma visão geral do projeto, explicando o que ele faz, seus principais recursos e funcionalidades. Você também pode incluir capturas de tela, gifs animados ou até mesmo um vídeo para demonstrar o projeto em ação.
+Este projeto tem como objetivo o desenvolvimento de uma game engine moderna escrita em Rust, utilizando Lua como linguagem de script integrada.
+Além de servir como plataforma para experimentação técnica em sistemas de jogos, o projeto também é concebido como uma iniciativa robusta e relevante para meu portfólio, demonstrando conhecimentos sólidos em:
+- Arquitetura de motores de jogo
+- Integração de linguagens de script
+- Sistemas de renderização e abstração gráfica
+- Programação de baixo nível com Rust
+- Organização de código e engenharia de software
+- Construção de ferramentas e pipelines de desenvolvimento
+- Boas práticas em design de APIs e modularidade
 
 ## 💻 Tarefas
 
@@ -166,3 +174,4 @@ Este projeto está licenciado sob a [Nome da Licença]. Consulte o arquivo [LICE
 ---
 
 Aproveite o projeto e fique à vontade para personalizar este README de acordo com as necessidades do seu repositório. Divirta-se codificando! 🎉😄
+
