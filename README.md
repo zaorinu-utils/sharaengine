@@ -41,12 +41,12 @@ Além de funcionar como plataforma experimental para sistemas de jogos, o projet
 <!--
 - [ ] `CONTRIBUTING.md`  
 - [ ] `CODE_OF_CONDUCT.md`  
-- [ ] Definição de licença  
+- [X] Definição de licença  
 -->
 - [ ] `CHANGELOG.md`  
 - [ ] Configurar Rustfmt  
 - [ ] Configurar Clippy  
-- [ ] Lints no CI  
+- [X] Lints no CI  
 - [ ] Pipeline de build (Linux, Windows, macOS)  
 - [ ] Testes no CI  
 - [ ] Pipeline de documentação  
