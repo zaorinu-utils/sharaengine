@@ -1,0 +1,37 @@
+name: Auto Publish Docs on Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build docs
+        run: cargo doc --no-deps --document-private-items
+
+      - name: Prepare site
+        run: |
+          rm -rf public
+          mkdir -p public
+          cp -r Documentation/* public/ || true
+          cp -r target/doc public/api || true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

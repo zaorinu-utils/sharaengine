@@ -39,4 +39,21 @@ Para desenvolver localmente e executar os checks, instale o toolchain Rust (via 
    - Verificar formatação: `npm run format:check`
    - Lint Markdown: `npm run lint:md`
 
+6. Formatação automática via CI
+
+   O repositório possui um workflow (`.github/workflows/auto-format.yml`) que executa Prettier e `cargo fmt` automaticamente. Se forem encontradas mudanças, o workflow tentará comitar e dar push para a branch atual; se não conseguir (ex.: PR vindo de fork) ele criará um PR `auto/format-fixes` com as correções.
+
+7. Releases automáticas
+
+   O repositório possui um workflow (`.github/workflows/release.yml`) que detecta alterações na versão (`Cargo.toml` ou `package.json`) comparando com `origin/main`. Quando detectada uma mudança de versão ele:
+
+   - Atualiza o `Documentation/CHANGELOG.md` promovendo as entradas de `Unreleased` para a nova versão (via `.github/scripts/release_changelog.sh`).
+   - Cria uma tag `vX.Y.Z` e um GitHub Release com as notas extraídas do changelog.
+   - Publica a documentação (`cargo doc` + `Documentation/`) no GitHub Pages.
+   - Opcional: se o secret `CRATES_IO_TOKEN` estiver definido, tentará publicar o crate (`cargo publish`).
+
+   Requisitos/Secrets:
+   - `GITHUB_TOKEN` (fornecido automaticamente para workflows)
+   - `CRATES_IO_TOKEN` (opcional) — adicione em `Settings > Secrets` caso queira publicação automática no crates.io
+
 Observação: o workflow de CI (GitHub Actions) já executa as verificações automaticamente em pushes e PRs.

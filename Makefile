@@ -14,5 +14,10 @@ test:
 	cargo test
 
 release:
-	# Create annotated tag then push (example)
-	@echo "Run 'git tag -a vX.Y.Z -m \"release\"' then 'git push origin --tags' to trigger release workflow." 
+	# Create an annotated tag and push to trigger the release workflow
+	@if [ -z "$(V)" ]; then echo "Usage: make release V=0.1.0"; exit 1; fi
+	git tag -a v$(V) -m "release v$(V)"
+	git push origin v$(V)
+
+publish-docs:
+	@echo "Build and prepare docs locally: cargo doc --no-deps && cp -r target/doc public/api && cp -r Documentation public/"

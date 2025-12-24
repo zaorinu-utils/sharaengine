@@ -1,33 +1,86 @@
-name: Release
+name: Release (on version bump)
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
   contents: write
   packages: write
+  pages: write
 
 jobs:
-  publish:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.detect.outputs.version }}
+      source: ${{ steps.detect.outputs.source }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect version bump
+        id: detect
+        run: |
+          chmod +x .github/scripts/detect_version_bump.sh
+          .github/scripts/detect_version_bump.sh
+
+  release:
+    needs: detect
+    if: needs.detect.outputs.version != ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          fetch-depth: 0
 
-      - name: Publish crate (dry-run)
+      - name: Prepare changelog and release notes
+        id: changelog
         run: |
-          echo "Publishing (dry-run) ..."
-          cargo publish --dry-run || true
+          chmod +x .github/scripts/release_changelog.sh
+          NOTES=$( .github/scripts/release_changelog.sh "${{ needs.detect.outputs.version }}" ) || NOTES=""
+          echo "notes<<EOF" >> $GITHUB_ENV
+          echo "$NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create tag
+        run: |
+          TAG="v${{ needs.detect.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a $TAG -m "Release $TAG"
+          git push origin $TAG
 
       - name: Create GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.ref_name }}
+          tag: "v${{ needs.detect.outputs.version }}"
+          name: "v${{ needs.detect.outputs.version }}"
+          body: "${{ env.notes }}"
+
+      - name: Publish docs to gh-pages
+        uses: actions/checkout@v4
+      - name: Build docs
+        run: cargo doc --no-deps --document-private-items
+      - name: Prepare site
+        run: |
+          rm -rf public
+          mkdir -p public
+          cp -r Documentation/* public/ || true
+          cp -r target/doc public/api || true
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
+      - name: Publish crate (if token provided)
+        if: ${{ secrets.CRATES_IO_TOKEN != '' }}
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+        run: |
+          cargo publish || echo "cargo publish failed or already published"

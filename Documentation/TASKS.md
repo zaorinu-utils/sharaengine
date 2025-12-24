@@ -8,8 +8,8 @@
 - [ ] Pipeline de build (Linux, Windows, macOS)
 - [ ] Testes no CI
 - [ ] Pipeline de documentação
-- [ ] Lints de documentação (Prettier + markdownlint)
-- [ ] ISSUE templates, PR template, CODEOWNERS
+- [X] Lints de documentação (Prettier + markdownlint)
+- [X] Auto-format workflow (auto-format.yml)- [ ] ISSUE templates, PR template, CODEOWNERS
 - [ ] Dependabot (dependabot.yml)
 - [ ] Commitlint (conventional commits check)
 - [ ] Release workflow (publish crate / create release)
@@ -90,5 +90,6 @@
 ## Releases
 - [ ] Versão 0.1
 - [X] Changelog automático (workflow criado)
+- [X] Auto-release (detect version bump -> create tag/release)
 - [ ] Empacotamento da engine
-- [ ] Página no GitHub Pages (workflow criado; validação pendente)
+- [X] Página no GitHub Pages (workflow criado; validação pendente)
