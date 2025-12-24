@@ -5,13 +5,19 @@ Todas as mudanças relevantes no projeto serão listadas aqui.
 ## [Unreleased]
 
 ### Automated entries - 2025-12-24
-- feat: Atualiza workflows e scripts para suporte a autenticação por token nas operações de push e deploy do GitHub Pages (748d71a)
+
+- feat: Atualiza workflows e scripts para suporte a autenticação por token nas operações de push e
+  deploy do GitHub Pages (748d71a)
 - rsdp (3f3573f)
 - rpdw: project general pre-structure (6c5225c)
-- feat: Atualiza workflows e documentação para melhorar formatação e linting, além de ajustes no changelog e contribuição (02d4cb5)
-- feat: Adiciona workflows para gerenciamento de releases e publicação de documentação, incluindo detecção de mudanças de versão e formatação automática (63aae31)
-- feat: Atualiza workflows e documentação para suporte a dependências JS e Rust, adiciona templates de issues e PRs, e configura commitlint (eeb092a)
-- feat: Adiciona configuração de linting e formatação para documentação e código JavaScript (9c9f525)
+- feat: Atualiza workflows e documentação para melhorar formatação e linting, além de ajustes no
+  changelog e contribuição (02d4cb5)
+- feat: Adiciona workflows para gerenciamento de releases e publicação de documentação, incluindo
+  detecção de mudanças de versão e formatação automática (63aae31)
+- feat: Atualiza workflows e documentação para suporte a dependências JS e Rust, adiciona templates
+  de issues e PRs, e configura commitlint (eeb092a)
+- feat: Adiciona configuração de linting e formatação para documentação e código JavaScript
+  (9c9f525)
 - feat: Adiciona estrutura inicial do Shara Engine com módulos de núcleo e scripting (44a2493)
 - Update README.md (9d7b278)
 - fix: Wrong node version (078864d)
@@ -28,27 +34,22 @@ Todas as mudanças relevantes no projeto serão listadas aqui.
 - Initialize Rust project with basic setup (abe0242)
 - Initial commit (b11aee3)
 
-
-> Entradas do changelog são atualizadas automaticamente a partir das mensagens de
-commit (via workflow `Update Changelog`).
+> Entradas do changelog são atualizadas automaticamente a partir das mensagens de commit (via
+> workflow `Update Changelog`).
 
 - Estrutura inicial de documentação movida para `Documentation/`.
-- Arquivos de suporte adicionados: `CONTRIBUTING`, `CODE_OF_CONDUCT`,
-  `SETUP.md`, `TUTORIAL.md`.
+- Arquivos de suporte adicionados: `CONTRIBUTING`, `CODE_OF_CONDUCT`, `SETUP.md`, `TUTORIAL.md`.
 - `rust-toolchain.toml`, `rustfmt.toml`, `clippy.toml` e `.editorconfig` adicionados.
-- Workflow de CI (`.github/workflows/ci.yml`) criado (format, clippy, build,
-  test); agora integra Prettier + markdownlint para docs.
-- Workflow `gh-pages.yml` adicionado para publicar `Documentation/` e `cargo doc`
-  no GitHub Pages.
-- Workflow `release.yml` adicionado para detectar bumps de versão e publicar
-  release + docs.
-- Módulos/stubs adicionados: `src/engine_core.rs`, `src/engine_scripting.rs` e
-  `examples/simple.rs`.
+- Workflow de CI (`.github/workflows/ci.yml`) criado (format, clippy, build, test); agora integra
+  Prettier + markdownlint para docs.
+- Workflow `gh-pages.yml` adicionado para publicar `Documentation/` e `cargo doc` no GitHub Pages.
+- Workflow `release.yml` adicionado para detectar bumps de versão e publicar release + docs.
+- Módulos/stubs adicionados: `src/engine_core.rs`, `src/engine_scripting.rs` e `examples/simple.rs`.
 
 (Entradas futuras serão agregadas automaticamente.)
 
 ---
 
-Note: This project uses **Conventional Commits** and `release-please` to
-automate release PRs and changelog generation. Use `npm run changelog` locally
-or rely on the release workflow to produce clean changelog sections.
+Note: This project uses **Conventional Commits** and `release-please` to automate release PRs and
+changelog generation. Use `npm run changelog` locally or rely on the release workflow to produce
+clean changelog sections.
