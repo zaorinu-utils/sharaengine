@@ -17,10 +17,16 @@ Para desenvolver localmente e executar os checks, instale o toolchain Rust (via 
 4. Ferramentas JS (documentação e lint de arquivos Markdown):
 
    - Instalar Node.js (LTS): https://nodejs.org/
-   - Instalar dependências JS do repositório:
+   - Instalar dependências JS do repositório (recomendado gerar e commitar `package-lock.json` para builds reprodutíveis):
 
      ```bash
-     npm ci
+     if [ -f package-lock.json ]; then
+       npm ci
+     else
+       npm install
+       # Opcional: adicione e commite o package-lock.json para travar versões
+       # git add package-lock.json && git commit -m "chore(deps): add package-lock.json"
+     fi
      ```
 
 5. Comandos úteis:

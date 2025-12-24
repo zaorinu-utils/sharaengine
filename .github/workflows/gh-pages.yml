@@ -24,7 +24,12 @@ jobs:
           node-version: '18'
 
       - name: Install JS dev deps
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Check formatting (Prettier)
         run: npm run format:check
