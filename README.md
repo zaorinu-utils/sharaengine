@@ -11,8 +11,9 @@
 
 ## Status
 
-- CI: ![CI](https://github.com/yourname/sharaengine/actions/workflows/ci.yml/badge.svg) (executa format, clippy, build, test)
-- Formatação/Lints: configurados em `rust-toolchain.toml` / `rustfmt.toml` / `clippy.toml` (ver `Documentation/SETUP.md` para instruções locais)
+- CI: ![CI](https://github.com/silas-andrade/sharaengine/actions/workflows/ci.yml/badge.svg) (executa format, clippy, build, test)
+- Docs: ![Pages](https://github.com/silas-andrade/sharaengine/actions/workflows/gh-pages.yml/badge.svg) — https://silas-andrade.github.io/sharaengine/ (deploy automático via workflow)
+- Formatação/Lints: configurados em `rust-toolchain.toml` / `rustfmt.toml` / `clippy.toml` e docs com Prettier + markdownlint (ver `Documentation/SETUP.md` para instruções locais)
 
 ---
 

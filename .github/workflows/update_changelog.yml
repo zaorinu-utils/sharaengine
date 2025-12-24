@@ -22,4 +22,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Ensure script is runnable
+          chmod +x .github/scripts/generate_changelog.sh
           bash .github/scripts/generate_changelog.sh

@@ -1,7 +1,5 @@
 # Tarefas & Roadmap
 
-Esta é a lista de tarefas extraída do `README.md`.
-
 ## Infraestrutura do Repositório
 - [ ] `CHANGELOG.md`
 - [ ] Configurar Rustfmt
@@ -10,6 +8,7 @@ Esta é a lista de tarefas extraída do `README.md`.
 - [ ] Pipeline de build (Linux, Windows, macOS)
 - [ ] Testes no CI
 - [ ] Pipeline de documentação
+- [ ] Lints de documentação (Prettier + markdownlint)
 
 ## Engine Core
 - [ ] Módulo `engine-core`
@@ -82,9 +81,10 @@ Esta é a lista de tarefas extraída do `README.md`.
 - [ ] Documentação da API Lua
 - [ ] Tutorial: “Seu Primeiro Jogo”
 - [ ] Exemplos práticos (Pong, plataforma simples)
+- [ ] Pipeline de documentação (publicar docs no GitHub Pages)
 
 ## Releases
 - [ ] Versão 0.1
-- [ ] Changelog automático
+- [X] Changelog automático (workflow criado)
 - [ ] Empacotamento da engine
-- [ ] Página no GitHub Pages
+- [ ] Página no GitHub Pages (workflow criado; validação pendente)
